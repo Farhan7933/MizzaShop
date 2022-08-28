@@ -1,0 +1,61 @@
+﻿@model IEnumerable<APIConsumingIntoMVC.Models.MizzaSize>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (@Html.BeginForm("FilteredItem", "MizzaSize", FormMethod.Get))
+{
+    <b> Search By?:</b>
+    @Html.RadioButton("option", "MizzaSizeID") <text>MizzaSizeID</text>
+    @Html.TextBox("id")
+    <input type="submit" value="submit" />
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MizzaSizeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MizzaSizeName)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MizzaSizeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MizzaSizeName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MizzaSizeID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MizzaSizeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MizzaSizeID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        @if (ViewBag.PrevPageNo != null)
+        {
+            @Html.ActionLink("Previous", "index", new { page = ViewBag.PrevPageNo }, new { @class = "btn btn-primary" })
+        }
+        @if (ViewBag.NextPageNo != null)
+        {
+            @Html.ActionLink("Next", "index", new { page = ViewBag.NextPageNo }, new { @class = "btn btn-success" })
+        }
+    </ul>
+</nav>

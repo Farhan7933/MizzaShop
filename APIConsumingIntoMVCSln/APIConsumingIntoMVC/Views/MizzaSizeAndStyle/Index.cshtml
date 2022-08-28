@@ -1,0 +1,76 @@
+﻿@model APIConsumingIntoMVC.ViewModel.MizzaSizeAndStyle
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>MizzaSizeAndStyle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+</div>
+
+<h2> MizzaSizes </h2>
+<table class="table">
+    <tr>
+        <th>
+            MizzaSizeID
+        </th>
+        <th>
+            MizzaSizeName
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.mizzaSizes)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MizzaSizeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MizzaSizeName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MizzaSizeID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MizzaSizeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MizzaSizeID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h2> MizzaStyles </h2>
+<table class="table">
+    <tr>
+        <th>
+            MizzaStyleID
+        </th>
+        <th>
+            MizzaStyleName
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.mizzaStyles)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MizzaStyleID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MizzaStyleName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MizzaStyleID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MizzaStyleID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MizzaStyleID })
+            </td>
+        </tr>
+    }
+
+</table>
